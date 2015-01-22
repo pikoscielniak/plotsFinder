@@ -45,7 +45,7 @@ describe('plotsFinder', function () {
             expect(result.plotsWorth).to.equal(6);
         });
 
-        it("for 2000000 should take less than 2000ms", function (done) {
+        it("for 2000000 plots should take less than 2000ms", function (done) {
             var array = createArray(2000000);
             plotFinder.findPlots(array);
 
