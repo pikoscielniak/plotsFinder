@@ -2,6 +2,19 @@ var expect = require('chai').expect;
 var plotFinder = require('../plotsFinder');
 
 describe('plotsFinder', function () {
+
+    function getNumber() {
+        return Math.floor(Math.random() * 2000 - 1000);
+    }
+
+    function createArray(size) {
+        var array = [];
+        for (var i = 0; i < size; i++) {
+            array.push(getNumber());
+        }
+        return array;
+    }
+
     it("returns proper values for [-5, 0, 7, 6, 4, 3, 5, 0, 2]", function () {
         var array = [-5, 0, 7, 6, 4, 3, 5, 0, 2];
         var result = plotFinder.findPlots(array);
@@ -27,5 +40,12 @@ describe('plotsFinder', function () {
         expect(result.startPlot).to.equal(6);
         expect(result.endPlot).to.equal(7);
         expect(result.getPlotsWorth).to.equal(6);
+    });
+
+    it("for 2000000 should take less than 2000ms", function (done) {
+        var array = createArray(2000000);
+        plotFinder.findPlots(array);
+
+        done();
     });
 });
