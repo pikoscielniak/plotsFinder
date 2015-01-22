@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plots Finder</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body ng-app="plotsFinder" ng-controller="MainCtrl as vm">
+<div class="container">
+    <div class="page-header">
+        <h1>Plots Finder</h1>
+    </div>
+
+    <div class="row">
+        <form class="form-horizontal col-md-10 col-md-offset-1">
+            <div class="form-group">
+                <label for="values" class="col-md-2 control-label">Plot values:</label>
+
+                <div class="input-group col-md-6 col-sm-4">
+                    <input type="text" class="form-control " id="values"
+                           placeholder="Plot values" ng-model="vm.values">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="vm.findPlots(vm.values)">Find</button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="displayResult" class="col-md-2 control-label">Result:</label>
+
+                <div class="input-group col-md-2 col-sm-2">
+                    <input readonly type="text" class="form-control " id="displayResult" ng-model="vm.displayResult">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/dist/app.js"></script>
+</body>
+</html>

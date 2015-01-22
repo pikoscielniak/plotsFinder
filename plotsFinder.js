@@ -60,7 +60,7 @@ function findPlots(array) {
     return {
         startPlot: bestRange.start,
         endPlot: bestRange.end,
-        getPlotsWorth: bestRange.getPlotsWorth()
+        plotsWorth: bestRange.getPlotsWorth()
     };
 }
 

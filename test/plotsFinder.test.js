@@ -3,49 +3,54 @@ var plotFinder = require('../plotsFinder');
 
 describe('plotsFinder', function () {
 
-    function getNumber() {
-        return Math.floor(Math.random() * 2000 - 1000);
-    }
+    describe("findPlots", function () {
 
-    function createArray(size) {
-        var array = [];
-        for (var i = 0; i < size; i++) {
-            array.push(getNumber());
+
+        function getNumber() {
+            return Math.floor(Math.random() * 2000 - 1000);
         }
-        return array;
-    }
 
-    it("returns proper values for [-5, 0, 7, 6, 4, 3, 5, 0, 2]", function () {
-        var array = [-5, 0, 7, 6, 4, 3, 5, 0, 2];
-        var result = plotFinder.findPlots(array);
+        function createArray(size) {
+            var array = [];
+            for (var i = 0; i < size; i++) {
+                array.push(getNumber());
+            }
+            return array;
+        }
 
-        expect(result.startPlot).to.equal(2);
-        expect(result.endPlot).to.equal(6);
-        expect(result.getPlotsWorth).to.equal(25);
-    });
+        it("returns proper values for [-5, 0, 7, 6, 4, 3, 5, 0, 2]", function () {
+            var array = [-5, 0, 7, 6, 4, 3, 5, 0, 2];
+            var result = plotFinder.findPlots(array);
 
-    it("returns proper values for [2, -2, 0, 3, 4, 1, 0, 0, 7]", function () {
-        var array = [2, -2, 0, 3, 4, 1, 0, 0, 7];
-        var result = plotFinder.findPlots(array);
+            expect(result.startPlot).to.equal(2);
+            expect(result.endPlot).to.equal(6);
+            expect(result.plotsWorth).to.equal(25);
+        });
 
-        expect(result.startPlot).to.equal(8);
-        expect(result.endPlot).to.equal(8);
-        expect(result.getPlotsWorth).to.equal(7);
-    });
+        it("returns proper values for [2, -2, 0, 3, 4, 1, 0, 0, 7]", function () {
+            var array = [2, -2, 0, 3, 4, 1, 0, 0, 7];
+            var result = plotFinder.findPlots(array);
 
-    it("returns proper values for [2, 2, 2, 0, 2, 0, 3, 3, 0]", function () {
-        var array = [2, 2, 2, 0, 2, 0, 3, 3, 0];
-        var result = plotFinder.findPlots(array);
+            expect(result.startPlot).to.equal(8);
+            expect(result.endPlot).to.equal(8);
+            expect(result.plotsWorth).to.equal(7);
+        });
 
-        expect(result.startPlot).to.equal(6);
-        expect(result.endPlot).to.equal(7);
-        expect(result.getPlotsWorth).to.equal(6);
-    });
+        it("returns proper values for [2, 2, 2, 0, 2, 0, 3, 3, 0]", function () {
+            var array = [2, 2, 2, 0, 2, 0, 3, 3, 0];
+            var result = plotFinder.findPlots(array);
 
-    it("for 2000000 should take less than 2000ms", function (done) {
-        var array = createArray(2000000);
-        plotFinder.findPlots(array);
+            expect(result.startPlot).to.equal(6);
+            expect(result.endPlot).to.equal(7);
+            expect(result.plotsWorth).to.equal(6);
+        });
 
-        done();
+        it("for 2000000 should take less than 2000ms", function (done) {
+            var array = createArray(2000000);
+            plotFinder.findPlots(array);
+
+            done();
+        });
+
     });
 });
